@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
-import * as cors from "cors";
-import * as express from "express";
+import cors from "cors";
+import express, {Request, Response, NextFunction} from "express";
 
 // Initialize Firebase Admin
 admin.initializeApp();
@@ -20,7 +20,7 @@ app.use(express.json());
  * Hello World endpoint - Basic greeting
  * GET /hello
  */
-app.get("/hello", (req, res) => {
+app.get("/hello", (req: Request, res: Response) => {
   const response = {
     message: "Hello from Firebase Cloud Functions!",
     timestamp: new Date().toISOString(),
@@ -34,7 +34,7 @@ app.get("/hello", (req, res) => {
  * Get User endpoint - Fetch user information
  * GET /getUser?id=123
  */
-app.get("/getUser", (req, res) => {
+app.get("/getUser", (req: Request, res: Response) => {
   const userId = req.query.id as string;
 
   if (!userId) {
@@ -66,7 +66,7 @@ app.get("/getUser", (req, res) => {
  * Get Data endpoint - Returns sample data array
  * GET /getData
  */
-app.get("/getData", (req, res) => {
+app.get("/getData", (req: Request, res: Response) => {
   const sampleData = [
     {
       id: 1,
@@ -111,7 +111,7 @@ app.get("/getData", (req, res) => {
  * POST /submitData
  * Body: { name: string, email: string, message: string }
  */
-app.post("/submitData", (req, res) => {
+app.post("/submitData", (req: Request, res: Response) => {
   const {name, email, message} = req.body;
 
   // Validate required fields
@@ -155,7 +155,7 @@ app.post("/submitData", (req, res) => {
  * Health Check endpoint
  * GET /health
  */
-app.get("/health", (req, res) => {
+app.get("/health", (req: Request, res: Response) => {
   res.status(200).json({
     status: "healthy",
     uptime: process.uptime(),
@@ -167,7 +167,7 @@ app.get("/health", (req, res) => {
 /**
  * 404 handler for undefined routes
  */
-app.use((req, res) => {
+app.use((req: Request, res: Response) => {
   res.status(404).json({
     error: "Endpoint not found",
     message: `The endpoint ${req.method} ${req.path} does not exist`,
@@ -184,8 +184,8 @@ app.use((req, res) => {
 /**
  * Error handling middleware
  */
-app.use((err: Error, req: express.Request, res: express.Response,
-  next: express.NextFunction) => {
+app.use((err: Error, req: Request, res: Response,
+  next: NextFunction) => {
   console.error("Error:", err);
   res.status(500).json({
     error: "Internal server error",
@@ -198,7 +198,7 @@ app.use((err: Error, req: express.Request, res: express.Response,
 export const api = functions.https.onRequest(app);
 
 // Individual function exports for direct calling
-export const hello = functions.https.onRequest((req, res) => {
+export const hello = functions.https.onRequest((req: any, res: any) => {
   corsHandler(req, res, () => {
     res.json({
       message: "Hello from Firebase!",
