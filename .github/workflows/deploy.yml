@@ -3,10 +3,10 @@ name: Deploy to Firebase
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-deploy:
@@ -37,9 +37,9 @@ jobs:
       - name: Install functions dependencies
         run: cd functions && npm ci
 
-      # Deploy to production (main branch only)
+      # Deploy to production (master branch only)
       - name: Deploy to Production
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting,functions --force

@@ -150,7 +150,7 @@ curl -X POST https://us-central1-cicd-abcd.cloudfunctions.net/api/submitData \
 
 The GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically:
 
-### On Push to Main Branch:
+### On Push to Master Branch:
 1. Checks out the code
 2. Sets up Node.js v22
 3. Installs frontend dependencies
@@ -206,13 +206,13 @@ firebase deploy --only functions:api
 
 ### Automatic Deployment via GitHub Actions
 
-Simply push to the `main` branch or create a pull request:
+Simply push to the `master` branch or create a pull request:
 
 ```bash
 # For production deployment
 git add .
 git commit -m "Your changes"
-git push origin main
+git push origin master
 
 # For PR preview
 git checkout -b feature/my-feature

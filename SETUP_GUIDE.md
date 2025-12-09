@@ -139,10 +139,10 @@ After deployment, you'll see:
 #### Option B: GitHub Actions Deployment
 
 ```bash
-# Push to main branch
+# Push to master branch
 git add .
 git commit -m "Initial deployment"
-git push origin main
+git push origin master
 ```
 
 The GitHub Action will automatically deploy to Firebase.

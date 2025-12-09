@@ -130,8 +130,8 @@ git add .
 # Commit changes
 git commit -m "Your commit message"
 
-# Push to main (triggers production deployment)
-git push origin main
+# Push to master (triggers production deployment)
+git push origin master
 
 # Create new feature branch
 git checkout -b feature/my-feature
@@ -139,11 +139,11 @@ git checkout -b feature/my-feature
 # Push feature branch (create PR for preview)
 git push origin feature/my-feature
 
-# Switch back to main
-git checkout main
+# Switch back to master
+git checkout master
 
 # Pull latest changes
-git pull origin main
+git pull origin master
 ```
 
 ## 🔐 GitHub Secrets Setup
@@ -251,7 +251,7 @@ firebase hosting:channel:list
 ```bash
 git add .
 git commit -m "Update app"
-git push origin main
+git push origin master
 # Automatically deploys to production
 ```
 

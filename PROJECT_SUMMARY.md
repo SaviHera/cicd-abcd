@@ -22,7 +22,7 @@
 - ✅ TypeScript implementation
 
 ### CI/CD Pipeline (GitHub Actions)
-- ✅ Automated deployment on push to main branch
+- ✅ Automated deployment on push to master branch
 - ✅ Preview deployments for pull requests
 - ✅ Node.js 22 environment
 - ✅ Separate build steps for frontend and functions
@@ -60,7 +60,7 @@
    - Error handling and validation
 
 ### 3. **Automated CI/CD**
-   - Push to main → Production deployment
+   - Push to master → Production deployment
    - Pull request → Preview deployment (7 days)
    - Automatic build and deploy process
    - GitHub Actions integration
@@ -107,7 +107,7 @@ firebase deploy
 # Or push to GitHub
 git add .
 git commit -m "Initial deployment"
-git push origin main
+git push origin master
 ```
 
 ## 📂 Project Structure
@@ -204,7 +204,7 @@ curl -X POST https://us-central1-cicd-abcd.cloudfunctions.net/api/submitData \
 
 ## 📊 What Happens in CI/CD
 
-### When you push to main:
+### When you push to master:
 1. ✅ GitHub Actions workflow triggers
 2. ✅ Checkout code
 3. ✅ Setup Node.js 22
