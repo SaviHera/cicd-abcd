@@ -28,14 +28,19 @@ jobs:
 
       # Install and build frontend
       - name: Install frontend dependencies
-        run: npm ci
+        run: |
+          npm cache clean --force
+          npm install
 
       - name: Build frontend
         run: npm run build
 
       # Install functions dependencies
       - name: Install functions dependencies
-        run: cd functions && npm ci
+        run: |
+          cd functions
+          npm cache clean --force
+          npm install
 
       # Deploy to production (master branch only)
       - name: Deploy to Production
