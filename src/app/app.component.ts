@@ -22,6 +22,7 @@ export class AppComponent {
   apiResponse: string = '';
   loading: boolean = false;
   apiUrl = environment.apiUrl;
+  //Test
 
   constructor(private http: HttpClient) {}
 
