@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="header">
+    <h1>🚀 CICD-ABCD</h1>
+    <p>Firebase CI/CD Deployment Demo <span class="badge">LIVE</span></p>
+  </div>
+
+  <div class="card">
+    <h2>Welcome to the Demo App!</h2>
+    <p>
+      This is a sample Angular application with Firebase backend endpoints designed to demonstrate 
+      CI/CD deployment using GitHub Actions.
+    </p>
+    <p>
+      <strong>Features:</strong>
+    </p>
+    <ul>
+      <li>✅ Angular 18 Frontend</li>
+      <li>✅ Firebase Cloud Functions Backend</li>
+      <li>✅ Automated GitHub Actions Deployment</li>
+      <li>✅ Production & PR Preview Environments</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Available Backend Endpoints</h2>
+    <p>Click the buttons below to test the Firebase Cloud Functions endpoints:</p>
+    
+    <ul class="endpoint-list">
+      <li>
+        <div>
+          <span class="method">GET</span>
+          <code>/hello</code> - Basic greeting endpoint
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="method">GET</span>
+          <code>/getUser?id=123</code> - Fetch user data
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="method">GET</span>
+          <code>/getData</code> - Get sample data array
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="method">POST</span>
+          <code>/submitData</code> - Submit form data
+        </div>
+      </li>
+    </ul>
+
+    <div style="margin-top: 20px;">
+      <button (click)="testHelloEndpoint()" [disabled]="loading">
+        Test Hello Endpoint
+      </button>
+      <button (click)="testUserEndpoint()" [disabled]="loading">
+        Test Get User
+      </button>
+      <button (click)="testDataEndpoint()" [disabled]="loading">
+        Test Get Data
+      </button>
+      <button (click)="testPostEndpoint()" [disabled]="loading">
+        Test Submit Data
+      </button>
+    </div>
+
+    <div *ngIf="loading" class="response">
+      Loading<span class="loading"></span>
+    </div>
+
+    <div *ngIf="apiResponse && !loading" 
+         [class]="apiResponse.includes('Error') ? 'response error' : 'response success'">
+      {{ apiResponse }}
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔧 CI/CD Pipeline Status</h2>
+    <p>This app is configured with GitHub Actions for automated deployment:</p>
+    <ul>
+      <li><strong>Production:</strong> Deploys to Firebase on push to main branch</li>
+      <li><strong>Preview:</strong> Creates temporary preview on pull requests (7 days)</li>
+    </ul>
+    <p style="margin-top: 15px;">
+      <strong>Repository:</strong> 
+      <a href="https://github.com/SaviHera/cicd-abcd" target="_blank" style="color: #667eea;">
+        github.com/SaviHera/cicd-abcd
+      </a>
+    </p>
+  </div>
+</div>
+
